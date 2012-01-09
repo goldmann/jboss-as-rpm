@@ -1,0 +1,104 @@
+diff -Naur jboss-as-7.1.0.CR1b/build/build.xml jboss-as-7.1.0.CR1b-work/build/build.xml
+--- jboss-as-7.1.0.CR1b/build/build.xml	2011-12-23 16:56:17.000000000 -0500
++++ jboss-as-7.1.0.CR1b-work/build/build.xml	2012-01-09 11:19:34.299745979 -0500
+@@ -204,6 +204,10 @@
+             <maven-resource group="org.jboss.logmanager" artifact="jboss-logmanager-log4j"/>
+         </module-def>
+ 
++        <module-def name="org.jboss.as.naming">
++            <maven-resource group="org.jboss.as" artifact="jboss-as-naming"/>
++        </module-def>
++
+         <module-def name="org.jboss.remoting3">
+             <maven-resource group="org.jboss.remoting3" artifact="jboss-remoting"/>
+         </module-def>
+@@ -792,10 +796,6 @@
+             <maven-resource group="org.jboss.as" artifact="jboss-as-pojo"/>
+         </module-def>
+ 
+-        <module-def name="org.jboss.as.naming">
+-            <maven-resource group="org.jboss.as" artifact="jboss-as-naming"/>
+-        </module-def>
+-
+      	<module-def name="org.jboss.as.osgi">
+             <maven-resource group="org.jboss.as" artifact="jboss-as-osgi-service"/>
+         </module-def>
+diff -Naur jboss-as-7.1.0.CR1b/build/pom.xml jboss-as-7.1.0.CR1b-work/build/pom.xml
+--- jboss-as-7.1.0.CR1b/build/pom.xml	2011-12-23 16:56:17.000000000 -0500
++++ jboss-as-7.1.0.CR1b-work/build/pom.xml	2012-01-09 09:56:40.393003408 -0500
+@@ -106,6 +106,11 @@
+ 
+         <dependency>
+             <groupId>org.jboss.as</groupId>
++            <artifactId>jboss-as-domain-http-error-context</artifactId>
++        </dependency>
++
++        <dependency>
++            <groupId>org.jboss.as</groupId>
+             <artifactId>jboss-as-jmx</artifactId>
+         </dependency>
+ 
+@@ -155,6 +160,11 @@
+         </dependency>
+ 
+         <dependency>
++            <groupId>org.jboss.as</groupId>
++            <artifactId>jboss-as-naming</artifactId>
++        </dependency>
++
++        <dependency>
+             <groupId>org.jboss.msc</groupId>
+             <artifactId>jboss-msc</artifactId>
+         </dependency>
+@@ -791,11 +801,6 @@
+ 
+                 <dependency>
+                     <groupId>org.jboss.as</groupId>
+-                    <artifactId>jboss-as-domain-http-error-context</artifactId>
+-                </dependency>
+-
+-                <dependency>
+-                    <groupId>org.jboss.as</groupId>
+                     <artifactId>jboss-as-ee</artifactId>
+                 </dependency>
+ 
+@@ -860,11 +865,6 @@
+                 </dependency>
+ 
+                 <dependency>
+-                    <groupId>org.jboss.as</groupId>
+-                    <artifactId>jboss-as-naming</artifactId>
+-                </dependency>
+-
+-                <dependency>
+                     <groupId>org.jboss.as</groupId>
+                     <artifactId>jboss-as-pojo</artifactId>
+                 </dependency>
+diff -Naur jboss-as-7.1.0.CR1b/pom.xml jboss-as-7.1.0.CR1b-work/pom.xml
+--- jboss-as-7.1.0.CR1b/pom.xml	2011-12-23 16:56:17.000000000 -0500
++++ jboss-as-7.1.0.CR1b-work/pom.xml	2012-01-09 09:53:52.184001347 -0500
+@@ -276,7 +276,9 @@
+         <module>domain-http</module>
+         <module>domain-management</module>
+         <module>embedded</module>
++        <module>jmx</module>
+         <module>management-client-content</module>
++        <module>naming</module>
+         <module>network</module>
+         <module>platform-mbean</module>
+         <module>process-controller</module>
+@@ -6001,14 +6003,12 @@
+                 <module>jaxr</module>
+                 <module>jaxrs</module>
+                 <module>jdr</module>
+-                <module>jmx</module>
+                 <module>jpa</module>
+                 <module>jsr77</module>
+                 <module>logging</module>
+                 <module>mail</module>
+                 <module>messaging</module>
+                 <module>modcluster</module>
+-                <module>naming</module>
+                 <module>osgi</module>
+                 <module>pojo</module>
+                 <module>remoting-test</module>

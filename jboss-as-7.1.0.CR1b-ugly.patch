@@ -1,0 +1,15 @@
+diff -Naur jboss-as-7.1.0.CR1b/build/pom.xml jboss-as-7.1.0.CR1b-work/build/pom.xml
+--- jboss-as-7.1.0.CR1b/build/pom.xml	2011-12-23 16:56:17.000000000 -0500
++++ jboss-as-7.1.0.CR1b-work/build/pom.xml	2012-01-09 09:22:42.897094527 -0500
+@@ -115,11 +115,6 @@
+         </dependency>
+ 
+         <dependency>
+-            <groupId>org.jboss.as</groupId>
+-            <artifactId>jbossweb-native</artifactId>
+-        </dependency>
+-
+-        <dependency>
+             <groupId>org.jboss.invocation</groupId>
+             <artifactId>jboss-invocation</artifactId>
+         </dependency>

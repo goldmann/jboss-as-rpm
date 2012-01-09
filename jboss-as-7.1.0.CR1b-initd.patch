@@ -1,0 +1,20 @@
+diff -Naur jboss-as-7.1.0.CR1b/build/src/main/resources/bin/init.d/jboss-as.conf jboss-as-7.1.0.CR1b-work/build/src/main/resources/bin/init.d/jboss-as.conf
+--- jboss-as-7.1.0.CR1b/build/src/main/resources/bin/init.d/jboss-as.conf	2011-12-23 16:56:17.000000000 -0500
++++ jboss-as-7.1.0.CR1b-work/build/src/main/resources/bin/init.d/jboss-as.conf	2012-01-09 08:41:13.280203232 -0500
+@@ -3,7 +3,7 @@
+ 
+ # The username who should own the process.
+ #
+-# JBOSS_USER=jboss-as
++JBOSS_USER=jboss-as
+ 
+ # The amount of time to wait for startup
+ #
+@@ -16,3 +16,7 @@
+ # Location to keep the console log
+ #
+ # JBOSS_CONSOLE_LOG=/var/log/jboss-as/console.log
++
++# The configuration you want to run
++#
++JBOSS_CONFIG=standalone-minimalistic.xml

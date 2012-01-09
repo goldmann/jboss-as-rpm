@@ -1,0 +1,50 @@
+diff -Naur jboss-as-7.1.0.CR1b/pom.xml jboss-as-7.1.0.CR1b-work/pom.xml
+--- jboss-as-7.1.0.CR1b/pom.xml	2011-12-23 16:56:17.000000000 -0500
++++ jboss-as-7.1.0.CR1b-work/pom.xml	2012-01-09 08:37:57.412224791 -0500
+@@ -289,10 +289,6 @@
+     <build>
+         <plugins>
+             <plugin>
+-                <groupId>org.apache.maven.plugins</groupId>
+-                <artifactId>maven-checkstyle-plugin</artifactId>
+-            </plugin>
+-            <plugin>
+                 <groupId>org.codehaus.mojo</groupId>
+                 <artifactId>buildnumber-maven-plugin</artifactId>
+                 <executions>
+@@ -348,35 +344,6 @@
+                     </configuration>
+                 </plugin>
+ 
+-                <!-- Checkstyle -->
+-                <plugin>
+-                    <groupId>org.apache.maven.plugins</groupId>
+-                    <artifactId>maven-checkstyle-plugin</artifactId>
+-                    <version>${version.checkstyle.plugin}</version>
+-                    <configuration>
+-                        <configLocation>jboss-as-checkstyle/checkstyle.xml</configLocation>
+-                        <consoleOutput>true</consoleOutput>
+-                        <failsOnError>true</failsOnError>
+-                        <useFile/>
+-                    </configuration>
+-                    <dependencies>
+-                        <dependency>
+-                            <groupId>org.jboss.as</groupId>
+-                            <artifactId>jboss-as-build-config</artifactId>
+-                            <version>${project.version}</version>
+-                        </dependency>
+-                    </dependencies>
+-                    <executions>
+-                        <execution>
+-                            <id>check-style</id>
+-                            <phase>compile</phase>
+-                            <goals>
+-                                <goal>checkstyle</goal>
+-                            </goals>
+-                        </execution>
+-                    </executions>
+-                </plugin>
+-
+                 <!-- Ban bad dependencies -->
+                 <plugin>
+                     <groupId>org.apache.maven.plugins</groupId>
