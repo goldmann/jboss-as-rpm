@@ -21,12 +21,12 @@ URL:              http://www.jboss.org/jbossas
 
 # git clone git://github.com/jbossas/jboss-as.git
 # cd jboss-as && git archive --format=tar --prefix=jboss-as-7.1.0.CR1b/ 7.1.0.CR1b | xz > jboss-as-7.1.0.CR1b.tar.xz
-Source0:          %{name}-%{namedversion}.tar.xz
-Patch0:           %{name}-%{namedversion}-checkstyle.patch
-Patch1:           %{name}-%{namedversion}-initd.patch
-Patch2:           %{name}-%{namedversion}-modules.patch
+Source0:          jboss-as-%{namedversion}.tar.xz
+Patch0:           jboss-as-%{namedversion}-checkstyle.patch
+Patch1:           jboss-as-%{namedversion}-initd.patch
+Patch2:           jboss-as-%{namedversion}-modules.patch
 # Modifications here are purely temporary until we solve issues in the Right Way (tm)
-Patch3:           %{name}-%{namedversion}-ugly.patch
+Patch3:           jboss-as-%{namedversion}-ugly.patch
 
 BuildArch:        noarch
 
@@ -121,7 +121,7 @@ Requires:         jpackage-utils
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{namedversion}
+%setup -q -n jboss-as-%{namedversion}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -149,7 +149,7 @@ done
 
 for m in %{modules} build-config threads; do
   # JAR
-  cp -a ${m}/target/%{name}-${m}-%{namedversion}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}/%{name}-${m}.jar
+  cp -a ${m}/target/jboss-as-${m}-%{namedversion}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}/%{name}-${m}.jar
   # POM
   cp -a ${m}/pom.xml $RPM_BUILD_ROOT%{_mavenpomdir}/JPP.%{name}-%{name}-${m}.pom
   # DEPMAP
@@ -159,7 +159,7 @@ done
 # Special case domain-http submodules
 for m in interface error-context; do
   # JAR
-  cp -a domain-http/${m}/target/%{name}-domain-http-${m}-%{namedversion}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}/%{name}-domain-http-${m}.jar
+  cp -a domain-http/${m}/target/jboss-as-domain-http-${m}-%{namedversion}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}/%{name}-domain-http-${m}.jar
   # POM
   cp -a domain-http/${m}/pom.xml $RPM_BUILD_ROOT%{_mavenpomdir}/JPP.%{name}-%{name}-domain-http-${m}.pom
   # DEPMAP
@@ -175,7 +175,7 @@ cp -a pom.xml $RPM_BUILD_ROOT%{_mavenpomdir}/JPP.%{name}-%{name}-parent.pom
 # Apidocs
 cp -a target/site/apidocs/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}
 
-pushd build/target/%{name}-%{namedversion}
+pushd build/target/jboss-as-%{namedversion}
   # We don't need Windows files
   find bin/ -type f -name "*.bat" -delete
 
