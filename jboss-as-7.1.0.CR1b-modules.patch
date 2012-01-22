@@ -1,7 +1,22 @@
 diff -Naur jboss-as-7.1.0.CR1b/build/build.xml jboss-as-7.1.0.CR1b-work/build/build.xml
 --- jboss-as-7.1.0.CR1b/build/build.xml	2011-12-23 16:56:17.000000000 -0500
-+++ jboss-as-7.1.0.CR1b-work/build/build.xml	2012-01-09 11:19:34.299745979 -0500
-@@ -204,6 +204,10 @@
++++ jboss-as-7.1.0.CR1b-work/build/build.xml	2012-01-21 13:12:10.336003656 -0500
+@@ -127,6 +127,14 @@
+             <maven-resource group="org.jboss.as" artifact="jboss-as-domain-management"/>
+         </module-def>
+ 
++        <module-def name="org.jboss.as.ee">
++            <maven-resource group="org.jboss.as" artifact="jboss-as-ee"/>
++        </module-def>
++
++        <module-def name="org.jboss.as.ee.deployment">
++            <maven-resource group="org.jboss.as" artifact="jboss-as-ee-deployment"/>
++        </module-def>
++
+         <module-def name="org.jboss.as.embedded">
+             <maven-resource group="org.jboss.as" artifact="jboss-as-embedded"/>
+         </module-def>
+@@ -204,6 +212,10 @@
              <maven-resource group="org.jboss.logmanager" artifact="jboss-logmanager-log4j"/>
          </module-def>
  
@@ -11,6 +26,21 @@ diff -Naur jboss-as-7.1.0.CR1b/build/build.xml jboss-as-7.1.0.CR1b-work/build/bu
 +
          <module-def name="org.jboss.remoting3">
              <maven-resource group="org.jboss.remoting3" artifact="jboss-remoting"/>
+         </module-def>
+@@ -699,14 +711,6 @@
+             <maven-resource group="org.jboss.as" artifact="jboss-as-domain-http-error-context"/>
+         </module-def>
+ 
+-        <module-def name="org.jboss.as.ee">
+-            <maven-resource group="org.jboss.as" artifact="jboss-as-ee"/>
+-        </module-def>
+-
+-        <module-def name="org.jboss.as.ee.deployment">
+-            <maven-resource group="org.jboss.as" artifact="jboss-as-ee-deployment"/>
+-        </module-def>
+-
+         <module-def name="org.jboss.as.ejb3">
+             <maven-resource group="org.jboss.as" artifact="jboss-as-ejb3"/>
          </module-def>
 @@ -792,10 +796,6 @@
              <maven-resource group="org.jboss.as" artifact="jboss-as-pojo"/>
@@ -25,8 +55,8 @@ diff -Naur jboss-as-7.1.0.CR1b/build/build.xml jboss-as-7.1.0.CR1b-work/build/bu
          </module-def>
 diff -Naur jboss-as-7.1.0.CR1b/build/pom.xml jboss-as-7.1.0.CR1b-work/build/pom.xml
 --- jboss-as-7.1.0.CR1b/build/pom.xml	2011-12-23 16:56:17.000000000 -0500
-+++ jboss-as-7.1.0.CR1b-work/build/pom.xml	2012-01-09 09:56:40.393003408 -0500
-@@ -106,6 +106,11 @@
++++ jboss-as-7.1.0.CR1b-work/build/pom.xml	2012-01-22 04:57:05.261033293 -0500
+@@ -106,6 +106,21 @@
  
          <dependency>
              <groupId>org.jboss.as</groupId>
@@ -35,10 +65,20 @@ diff -Naur jboss-as-7.1.0.CR1b/build/pom.xml jboss-as-7.1.0.CR1b-work/build/pom.
 +
 +        <dependency>
 +            <groupId>org.jboss.as</groupId>
++            <artifactId>jboss-as-ee</artifactId>
++        </dependency>
++
++        <dependency>
++            <groupId>org.jboss.as</groupId>
++            <artifactId>jboss-as-ee-deployment</artifactId>
++        </dependency>
++
++        <dependency>
++            <groupId>org.jboss.as</groupId>
              <artifactId>jboss-as-jmx</artifactId>
          </dependency>
  
-@@ -155,6 +160,11 @@
+@@ -155,6 +170,11 @@
          </dependency>
  
          <dependency>
@@ -50,7 +90,7 @@ diff -Naur jboss-as-7.1.0.CR1b/build/pom.xml jboss-as-7.1.0.CR1b-work/build/pom.
              <groupId>org.jboss.msc</groupId>
              <artifactId>jboss-msc</artifactId>
          </dependency>
-@@ -791,11 +801,6 @@
+@@ -791,21 +811,6 @@
  
                  <dependency>
                      <groupId>org.jboss.as</groupId>
@@ -59,7 +99,17 @@ diff -Naur jboss-as-7.1.0.CR1b/build/pom.xml jboss-as-7.1.0.CR1b-work/build/pom.
 -
 -                <dependency>
 -                    <groupId>org.jboss.as</groupId>
-                     <artifactId>jboss-as-ee</artifactId>
+-                    <artifactId>jboss-as-ee</artifactId>
+-                </dependency>
+-
+-                <dependency>
+-                    <groupId>org.jboss.as</groupId>
+-                    <artifactId>jboss-as-ee-deployment</artifactId>
+-                </dependency>
+-
+-                <dependency>
+-                    <groupId>org.jboss.as</groupId>
+                     <artifactId>jboss-as-ejb3</artifactId>
                  </dependency>
  
 @@ -860,11 +865,6 @@
@@ -76,10 +126,13 @@ diff -Naur jboss-as-7.1.0.CR1b/build/pom.xml jboss-as-7.1.0.CR1b-work/build/pom.
                  </dependency>
 diff -Naur jboss-as-7.1.0.CR1b/pom.xml jboss-as-7.1.0.CR1b-work/pom.xml
 --- jboss-as-7.1.0.CR1b/pom.xml	2011-12-23 16:56:17.000000000 -0500
-+++ jboss-as-7.1.0.CR1b-work/pom.xml	2012-01-09 09:53:52.184001347 -0500
-@@ -276,7 +276,9 @@
++++ jboss-as-7.1.0.CR1b-work/pom.xml	2012-01-21 13:12:48.160000278 -0500
+@@ -275,8 +275,12 @@
+         <module>deployment-repository</module>
          <module>domain-http</module>
          <module>domain-management</module>
++        <module>ee</module>
++        <module>ee-deployment</module>
          <module>embedded</module>
 +        <module>jmx</module>
          <module>management-client-content</module>
@@ -87,7 +140,15 @@ diff -Naur jboss-as-7.1.0.CR1b/pom.xml jboss-as-7.1.0.CR1b-work/pom.xml
          <module>network</module>
          <module>platform-mbean</module>
          <module>process-controller</module>
-@@ -6001,14 +6003,12 @@
+@@ -5993,22 +5997,18 @@
+                 <module>demos</module>
+                 <module>deployment-scanner</module>
+                 <module>dist</module>
+-                <module>ee</module>
+-                <module>ee-deployment</module>
+                 <module>ejb3</module>
+                 <module>host-controller</module>
+                 <module>jacorb</module>
                  <module>jaxr</module>
                  <module>jaxrs</module>
                  <module>jdr</module>

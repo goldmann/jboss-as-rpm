@@ -9,7 +9,7 @@
 
 %global tcuid 92
 
-%global modules controller-client controller deployment-repository domain-management embedded jmx naming network platform-mbean process-controller protocol remoting server
+%global modules controller-client controller deployment-repository domain-management ee embedded jmx naming network platform-mbean process-controller protocol remoting server
 
 Name:             jboss-as
 Version:          7.1.0
@@ -38,10 +38,11 @@ BuildRequires:    bsf >= 2.4.0-10
 BuildRequires:    dom4j
 BuildRequires:    geronimo-annotation
 BuildRequires:    h2
-#BuildRequires:    hibernate-validator >= 4.2.0
+BuildRequires:    hibernate-validator >= 4.2.0
 BuildRequires:    jandex >= 1.0.3
 BuildRequires:    java-devel
 BuildRequires:    jgroups
+BuildRequires:    jboss-annotations-api
 BuildRequires:    jboss-dmr >= 1.1.1-1
 BuildRequires:    jboss-ejb-3.1-api
 BuildRequires:    jboss-httpserver >= 1.0.0-0.3.Beta3
@@ -53,7 +54,7 @@ BuildRequires:    jboss-logging >= 3.1.0-0.1.CR1
 BuildRequires:    jboss-logging-tools >= 1.0.0-0.1.CR4
 BuildRequires:    jboss-logmanager-log4j >= 1.0.0
 BuildRequires:    jboss-marshalling >= 1.3.4
-#BuildRequires:    jboss-metadata >= 7.0.0-0.1.Beta32
+BuildRequires:    jboss-metadata >= 7.0.0-0.1.Beta32
 BuildRequires:    jboss-modules >= 1.1.0-0.1.CR4
 BuildRequires:    jboss-msc >= 1.0.1
 BuildRequires:    jboss-remoting >= 3.2.0-0.2.CR6
@@ -77,9 +78,10 @@ Requires:         bean-validation-api
 Requires:         dom4j
 Requires:         geronimo-annotation
 Requires:         h2
-#Requires:         hibernate-validator >= 4.2.0
+Requires:         hibernate-validator >= 4.2.0
 Requires:         jandex >= 1.0.3
 Requires:         java
+Requires:         jboss-annotations-api
 Requires:         jboss-dmr >= 1.1.1-1
 Requires:         jboss-ejb-3.1-api
 Requires:         jboss-httpserver >= 1.0.0-0.3.Beta3
@@ -90,7 +92,7 @@ Requires:         jboss-logging-tools >= 1.0.0-0.1.CR4
 Requires:         jboss-jad-api_1.2_spec
 Requires:         jboss-logmanager-log4j >= 1.0.0
 Requires:         jboss-marshalling >= 1.3.4
-#Requires:         jboss-metadata >= 7.0.0-0.1.Beta32
+Requires:         jboss-metadata >= 7.0.0-0.1.Beta32
 Requires:         jboss-modules >= 1.1.0-0.1.CR4
 Requires:         jboss-msc >= 1.0.1
 Requires:         jboss-remoting >= 3.2.0-0.2.CR6
@@ -147,7 +149,7 @@ for mode in standalone domain; do
   install -d -m 775 $RPM_BUILD_ROOT%{logdir}/${mode}
 done
 
-for m in %{modules} build-config threads; do
+for m in %{modules} build-config ee-deployment threads; do
   # JAR
   cp -a ${m}/target/jboss-as-${m}-%{namedversion}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}/%{name}-${m}.jar
   # POM
@@ -257,6 +259,7 @@ pushd $RPM_BUILD_ROOT%{homedir}
 
     # special case naming
     ln -s %{_javadir}/jboss-as/jboss-as-domain-http-interface.jar org/jboss/as/domain-http-interface/main/jboss-as-domain-http-interface-%{namedversion}.jar
+    ln -s %{_javadir}/jboss-as/jboss-as-ee-deployment.jar org/jboss/as/ee/deployment/main/jboss-as-ee-deployment-%{namedversion}.jar
   popd
 popd
 
