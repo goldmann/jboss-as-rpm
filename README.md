@@ -17,3 +17,6 @@ I prepared a mock configuration file: `mock/fedora-rawhide-x86_64.cfg`. Make sur
 
 The resulting package(s) (and build logs) will be stored in `/var/lib/mock/fedora-rawhide-x86_64/result/` directory.
 
+## Status
+
+20 / 56 modules are packaged
