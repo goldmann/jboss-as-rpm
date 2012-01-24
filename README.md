@@ -20,3 +20,11 @@ The resulting package(s) (and build logs) will be stored in `/var/lib/mock/fedor
 ## Status
 
 20 / 56 modules are packaged
+
+## Development VMs
+
+We prepared VM's which can be used to jump-start you. There is everything installed which is needed to start work on AS 7 packaging. Every VM is based on Fedora Rawhide. To login use `root` user with `boxgrinder` password.
+
+* [KVM 64 bit](http://d25oih0l5muvfx.cloudfront.net/jboss-as-dev-1.0-fedora-rawhide-x86_64-raw.tgz) [411 MB]
+* [VMware 64 bit](http://d25oih0l5muvfx.cloudfront.net/jboss-as-dev-1.0-fedora-rawhide-x86_64-vmware.tgz) [355 MB]
+
