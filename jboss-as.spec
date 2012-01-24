@@ -215,7 +215,7 @@ pushd $RPM_BUILD_ROOT%{homedir}
   ln -s %{confdir}/domain domain/configuration
 
   # Symlink jboss-modules
-  ln -s %{_javadir}/jboss/jboss-modules.jar jboss-modules.jar
+  ln -s $(build-classpath jboss/jboss-modules.jar) jboss-modules.jar
   
   # Symlinks to log dirs
   ln -s %{logdir}/standalone standalone/log
@@ -234,36 +234,36 @@ pushd $RPM_BUILD_ROOT%{homedir}
   
   # Create symlinks to jars
   pushd modules
-    ln -s %{_javadir}/jboss/jboss-vfs.jar org/jboss/vfs/main/jboss-vfs.jar
-    ln -s %{_javadir}/jboss/jboss-common-core.jar org/jboss/common-core/main/jboss-common-core.jar
-    ln -s %{_javadir}/jboss/jandex.jar org/jboss/jandex/main/jandex.jar
-    ln -s %{_javadir}/jboss/jboss-annotations-1.1-api.jar javax/annotation/api/main/jboss-annotations-api.jar
-    ln -s %{_javadir}/jboss/jboss-interceptors-1.1-api.jar javax/interceptor/api/main/jboss-interceptors-api_1.1.jar
-    ln -s %{_javadir}/jboss/jboss-remoting.jar org/jboss/remoting3/main/jboss-remoting.jar
-    ln -s %{_javadir}/jboss/jboss-dmr.jar org/jboss/dmr/main/jboss-dmr.jar
-    ln -s %{_javadir}/jboss/jboss-marshalling-river.jar org/jboss/marshalling/river/main/jboss-marshalling-river.jar
-    ln -s %{_javadir}/jboss/jboss-marshalling.jar org/jboss/marshalling/main/jboss-marshalling.jar
-    ln -s %{_javadir}/jboss/jboss-logging.jar org/jboss/logging/main/jboss-logging.jar
-    ln -s %{_javadir}/jboss/jboss-msc.jar org/jboss/msc/main/jboss-msc.jar
-    ln -s %{_javadir}/jboss/jboss-threads.jar org/jboss/threads/main/jboss-threads.jar
-    ln -s %{_javadir}/jboss/jboss-invocation.jar org/jboss/invocation/main/jboss-invocation.jar
-    ln -s %{_javadir}/jboss/jboss-logmanager.jar org/jboss/logmanager/main/jboss-logmanager.jar
-    ln -s %{_javadir}/jboss/jboss-logmanager-log4j.jar org/jboss/logmanager/log4j/main/jboss-logmanager-log4j.jar
-    ln -s %{_javadir}/jboss/jboss-sasl.jar org/jboss/sasl/main/jboss-sasl.jar
-    ln -s %{_javadir}/jboss/xnio-api.jar org/jboss/xnio/main/xnio-api.jar
-    ln -s %{_javadir}/jboss/xnio-nio.jar org/jboss/xnio/nio/main/xnio-nio.jar
-    ln -s %{_javadir}/jboss/jboss-stdio.jar org/jboss/stdio/main/jboss-stdio.jar
-    ln -s %{_javadir}/jboss/staxmapper.jar org/jboss/staxmapper/main/staxmapper.jar
-    ln -s %{_javadir}/log4j.jar org/apache/log4j/main/log4j.jar
+    ln -s $(build-classpath jboss/jboss-vfs.jar) org/jboss/vfs/main/jboss-vfs.jar
+    ln -s $(build-classpath jboss/jboss-comon-core.jar) org/jboss/common-core/main/jboss-common-core.jar
+    ln -s $(build-classpath jboss/jandex.jar) org/jboss/jandex/main/jandex.jar
+    ln -s $(build-classpath jboss/jboss-annotations-1.1-api.jar) javax/annotation/api/main/jboss-annotations-api.jar
+    ln -s $(build-classpath jboss/jboss-interceptors-1.1-api.jar) javax/interceptor/api/main/jboss-interceptors-api_1.1.jar
+    ln -s $(build-classpath jboss/jboss-remoting.jar) org/jboss/remoting3/main/jboss-remoting.jar
+    ln -s $(build-classpath jboss/jboss-dmr.jar) org/jboss/dmr/main/jboss-dmr.jar
+    ln -s $(build-classpath jboss/jboss-marshalling-river.jar) org/jboss/marshalling/river/main/jboss-marshalling-river.jar
+    ln -s $(build-classpath jboss/jboss-marshalling.jar) org/jboss/marshalling/main/jboss-marshalling.jar
+    ln -s $(build-classpath jboss/jboss-logging.jar) org/jboss/logging/main/jboss-logging.jar
+    ln -s $(build-classpath jboss/jboss-msc.jar) org/jboss/msc/main/jboss-msc.jar
+    ln -s $(build-classpath jboss/jboss-threads.jar) org/jboss/threads/main/jboss-threads.jar
+    ln -s $(build-classpath jboss/jboss-invocation.jar) org/jboss/invocation/main/jboss-invocation.jar
+    ln -s $(build-classpath jboss/jboss-logmanager.jar) org/jboss/logmanager/main/jboss-logmanager.jar
+    ln -s $(build-classpath jboss/jboss-logmanager-log4j.jar) org/jboss/logmanager/log4j/main/jboss-logmanager-log4j.jar
+    ln -s $(build-classpath jboss/jboss-sasl.jar) org/jboss/sasl/main/jboss-sasl.jar
+    ln -s $(build-classpath jboss/xnio-api.jar) org/jboss/xnio/main/xnio-api.jar
+    ln -s $(build-classpath jboss/xnio-nio.jar) org/jboss/xnio/nio/main/xnio-nio.jar
+    ln -s $(build-classpath jboss/jboss-stdio.jar) org/jboss/stdio/main/jboss-stdio.jar
+    ln -s $(build-classpath jboss/staxmapper.jar) org/jboss/staxmapper/main/staxmapper.jar
+    ln -s $(build-classpath log4j.jar) org/apache/log4j/main/log4j.jar
 
     # JBoss AS modules (without build-config and threads)
     for m in %{modules}; do
-      ln -s %{_javadir}/jboss-as/jboss-as-${m}.jar  org/jboss/as/${m}/main/jboss-as-${m}-%{namedversion}.jar
+      ln -s $(build-classpath jboss-as/jboss-as-${m}.jar) org/jboss/as/${m}/main/jboss-as-${m}-%{namedversion}.jar
     done
 
     # special case naming
-    ln -s %{_javadir}/jboss-as/jboss-as-domain-http-interface.jar org/jboss/as/domain-http-interface/main/jboss-as-domain-http-interface-%{namedversion}.jar
-    ln -s %{_javadir}/jboss-as/jboss-as-ee-deployment.jar org/jboss/as/ee/deployment/main/jboss-as-ee-deployment-%{namedversion}.jar
+    ln -s $(build-classpath %{name}/%{name}-domain-http-interface.jar) org/jboss/as/domain-http-interface/main/jboss-as-domain-http-interface-%{namedversion}.jar
+    ln -s $(build-classpath %{name}/%{name}-ee-deployment.jar) org/jboss/as/ee/deployment/main/jboss-as-ee-deployment-%{namedversion}.jar
   popd
 popd
 
