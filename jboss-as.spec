@@ -42,13 +42,14 @@ BuildRequires:    hibernate-validator >= 4.2.0
 BuildRequires:    jandex >= 1.0.3
 BuildRequires:    java-devel
 BuildRequires:    jgroups
-BuildRequires:    jboss-annotations-api
+BuildRequires:    jboss-annotations-1.1-api
 BuildRequires:    jboss-dmr >= 1.1.1-1
 BuildRequires:    jboss-ejb-3.1-api
 BuildRequires:    jboss-httpserver >= 1.0.0-0.3.Beta3
 BuildRequires:    jboss-invocation
 BuildRequires:    jboss-interceptor >= 2.0.0-1
-BuildRequires:    jboss-jad-api_1.2_spec
+BuildRequires:    jboss-interceptors-1.1-api
+BuildRequires:    jboss-jad-1.2-api
 BuildRequires:    jboss-parent
 BuildRequires:    jboss-logging >= 3.1.0-0.1.CR1
 BuildRequires:    jboss-logging-tools >= 1.0.0-0.1.CR4
@@ -81,15 +82,16 @@ Requires:         h2
 Requires:         hibernate-validator >= 4.2.0
 Requires:         jandex >= 1.0.3
 Requires:         java
-Requires:         jboss-annotations-api
+Requires:         jboss-annotations-1.1-api
 Requires:         jboss-dmr >= 1.1.1-1
 Requires:         jboss-ejb-3.1-api
 Requires:         jboss-httpserver >= 1.0.0-0.3.Beta3
 Requires:         jboss-interceptor >= 2.0.0-1
+Requires:         jboss-interceptors-1.1-api
 Requires:         jboss-invocation
 Requires:         jboss-logging >= 3.1.0-0.1.CR1
 Requires:         jboss-logging-tools >= 1.0.0-0.1.CR4
-Requires:         jboss-jad-api_1.2_spec
+Requires:         jboss-jad-1.2-api
 Requires:         jboss-logmanager-log4j >= 1.0.0
 Requires:         jboss-marshalling >= 1.3.4
 Requires:         jboss-metadata >= 7.0.0-0.1.Beta32
@@ -235,8 +237,8 @@ pushd $RPM_BUILD_ROOT%{homedir}
     ln -s %{_javadir}/jboss/jboss-vfs.jar org/jboss/vfs/main/jboss-vfs.jar
     ln -s %{_javadir}/jboss/jboss-common-core.jar org/jboss/common-core/main/jboss-common-core.jar
     ln -s %{_javadir}/jboss/jandex.jar org/jboss/jandex/main/jandex.jar
-    ln -s %{_javadir}/jboss/jboss-annotations-api.jar javax/annotation/api/main/jboss-annotations-api.jar
-    ln -s %{_javadir}/jboss/jboss-interceptors-api_1.1.jar javax/interceptor/api/main/jboss-interceptors-api_1.1.jar
+    ln -s %{_javadir}/jboss/jboss-annotations-1.1-api.jar javax/annotation/api/main/jboss-annotations-api.jar
+    ln -s %{_javadir}/jboss/jboss-interceptors-1.1-api.jar javax/interceptor/api/main/jboss-interceptors-api_1.1.jar
     ln -s %{_javadir}/jboss/jboss-remoting.jar org/jboss/remoting3/main/jboss-remoting.jar
     ln -s %{_javadir}/jboss/jboss-dmr.jar org/jboss/dmr/main/jboss-dmr.jar
     ln -s %{_javadir}/jboss/jboss-marshalling-river.jar org/jboss/marshalling/river/main/jboss-marshalling-river.jar
