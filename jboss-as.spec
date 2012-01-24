@@ -235,6 +235,8 @@ pushd $RPM_BUILD_ROOT%{homedir}
     ln -s %{_javadir}/jboss/jboss-vfs.jar org/jboss/vfs/main/jboss-vfs.jar
     ln -s %{_javadir}/jboss/jboss-common-core.jar org/jboss/common-core/main/jboss-common-core.jar
     ln -s %{_javadir}/jboss/jandex.jar org/jboss/jandex/main/jandex.jar
+    ln -s %{_javadir}/jboss/jboss-annotations-api.jar javax/annotation/api/main/jboss-annotations-api.jar
+    ln -s %{_javadir}/jboss/jboss-interceptors-api_1.1.jar javax/interceptor/api/main/jboss-interceptors-api_1.1.jar
     ln -s %{_javadir}/jboss/jboss-remoting.jar org/jboss/remoting3/main/jboss-remoting.jar
     ln -s %{_javadir}/jboss/jboss-dmr.jar org/jboss/dmr/main/jboss-dmr.jar
     ln -s %{_javadir}/jboss/jboss-marshalling-river.jar org/jboss/marshalling/river/main/jboss-marshalling-river.jar
