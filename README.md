@@ -28,3 +28,12 @@ We prepared VM's which can be used to jump-start you. There is everything instal
 * [KVM 64 bit](http://d25oih0l5muvfx.cloudfront.net/jboss-as-dev-1.0-fedora-rawhide-x86_64-raw.tgz) [411 MB]
 * [VMware 64 bit](http://d25oih0l5muvfx.cloudfront.net/jboss-as-dev-1.0-fedora-rawhide-x86_64-vmware.tgz) [355 MB]
 
+### KVM installation instructions
+
+    wget http://d25oih0l5muvfx.cloudfront.net/jboss-as-dev-1.0-fedora-rawhide-x86_64-raw.tgz
+    tar -xf jboss-as-dev-1.0-fedora-rawhide-x86_64-raw.tgz
+    sudo cp jboss-as-dev-1.0-fedora-rawhide-x86_64-raw/jboss-as-dev-sda.qcow2 /var/lib/libvirt/images/
+    sudo virt-install -n jboss-as-dev-1.0-fedora-rawhide-x86_64 -r 2048 --vcpus 2 --os-type linux --os-variant fedora16 --disk path=/var/lib/libvirt/images/jboss-as-dev-sda.qcow2,bus=virtio,cache=writeback --network network=default,model=virtio --noautoconsole --import
+
+After running these commands you can connect to your `jboss-as-dev-1.0-fedora-rawhide-x86_64` domain using mentioned above credentials.
+
