@@ -22,11 +22,11 @@ URL:              http://www.jboss.org/jbossas
 # git clone git://github.com/jbossas/jboss-as.git
 # cd jboss-as && git archive --format=tar --prefix=jboss-as-7.1.0.CR1b/ 7.1.0.CR1b | xz > jboss-as-7.1.0.CR1b.tar.xz
 Source0:          jboss-as-%{namedversion}.tar.xz
-Patch0:           jboss-as-%{namedversion}-checkstyle.patch
-Patch1:           jboss-as-%{namedversion}-initd.patch
-Patch2:           jboss-as-%{namedversion}-modules.patch
+Patch0:           0001-Disable-checkstyle.patch
+Patch1:           0002-Fix-initd-script.patch
+Patch2:           0003-Build-additional-modules.patch
 # Modifications here are purely temporary until we solve issues in the Right Way (tm)
-Patch3:           jboss-as-%{namedversion}-ugly.patch
+Patch3:           0004-Ugly-patch-nuff-said.patch
 
 BuildArch:        noarch
 
