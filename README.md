@@ -2,20 +2,40 @@
 
 Everything about the process and current status can be found on this page: http://fedoraproject.org/wiki/JBossAS7
 
-## Setup
 
-The best idea is to build RPMs in mock. This will create the package every time in a clean environment.
+## How to build
+
+All commands specified here assume you are in the repo root directory.
+
+### Source RPM
+
+    rpmbuild --define "_topdir $PWD" -bs SPECS/jboss-as.spec
+
+### RPM
+
+For development you can use `rpmbuild` command, like this:
+
+    rpmbuild --define "_topdir $PWD" -bb SPECS/jboss-as.spec
+
+Please note the `-bb` switch change - it'll build the binary only. If you want to build `.src.rpm` and `.rpm` - use `-ba` switch. 
+
+### Using mock
+
+Mock builds provide clean builds, this means that if you want to be shure that the package has correct `BuildRequires` you should always use mock. It's slower than running `rpmbuild` command directly, but it ensure the build is executed in a clean environment.
+
+#### Setup
 
     yum install mock
 
 I prepared a mock configuration file: `mock/fedora-rawhide-x86_64.cfg`. Make sure you edit the file and point the `as7` repository baseurl to the correct location of the `rpm/` directory.
 
-## How to build
+#### Build
 
-    rpmbuild -bs jboss-as.spec
-    mock -v --configdir mock/ -r fedora-rawhide-x86_64 --rebuild ~/rpmbuild/SRPMS/jboss-as-*.src.rpm
+First of all build JBoss AS 7 source RPM - mock will rebuild it into a RPM.
 
-The resulting package(s) (and build logs) will be stored in `/var/lib/mock/fedora-rawhide-x86_64/result/` directory.
+    mock -v --configdir mock/ -r fedora-rawhide-x86_64 --rebuild SRPMS/jboss-as-*.src.rpm
+
+The resulting packages: both `.rpm` and `.src.rpm` and build logs will be stored in `/var/lib/mock/fedora-rawhide-x86_64/result/` directory.
 
 ## Status
 
