@@ -19,6 +19,12 @@ For development you can use `rpmbuild` command, like this:
 
 Please note the `-bb` switch change - it'll build the binary only. If you want to build `.src.rpm` and `.rpm` - use `-ba` switch. 
 
+If you want to skip `--define` parameter, you can add it to your `.rpmmacros` file, like this:
+
+    echo '%_topdir %(echo `pwd`)' >> ~/.rpmmacros
+
+Note that this will affect all executions of `rpmbuild` command.
+
 ### Using mock
 
 Mock builds provide clean builds, this means that if you want to be shure that the package has correct `BuildRequires` you should always use mock. It's slower than running `rpmbuild` command directly, but it ensure the build is executed in a clean environment.
