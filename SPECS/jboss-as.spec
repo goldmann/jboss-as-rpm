@@ -246,6 +246,7 @@ pushd $RPM_BUILD_ROOT%{homedir}
     ln -s $(build-classpath jboss/jboss-logging) org/jboss/logging/main/jboss-logging.jar
     ln -s $(build-classpath jboss/jboss-msc) org/jboss/msc/main/jboss-msc.jar
     ln -s $(build-classpath jboss/jboss-threads) org/jboss/threads/main/jboss-threads.jar
+    ln -s $(build-classpath jboss/jboss-transaction-1.1-api) ./javax/transaction/api/main/jboss-transaction-1.1-api.jar
     ln -s $(build-classpath jboss/jboss-invocation) org/jboss/invocation/main/jboss-invocation.jar
     ln -s $(build-classpath jboss/jboss-logmanager) org/jboss/logmanager/main/jboss-logmanager.jar
     ln -s $(build-classpath jboss/jboss-logmanager-log4j) org/jboss/logmanager/log4j/main/jboss-logmanager-log4j.jar
