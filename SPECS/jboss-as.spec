@@ -237,8 +237,8 @@ pushd $RPM_BUILD_ROOT%{homedir}
     ln -s $(build-classpath jboss/jboss-vfs) org/jboss/vfs/main/jboss-vfs.jar
     ln -s $(build-classpath jboss/jboss-common-core) org/jboss/common-core/main/jboss-common-core.jar
     ln -s $(build-classpath jboss/jandex) org/jboss/jandex/main/jandex.jar
-    ln -s $(build-classpath jboss/jboss-annotations-1.1-api) javax/annotation/api/main/jboss-annotations-api.jar
-    ln -s $(build-classpath jboss/jboss-interceptors-1.1-api) javax/interceptor/api/main/jboss-interceptors-api_1.1.jar
+    ln -s $(build-classpath jboss/jboss-annotations-1.1-api) javax/annotation/api/main/jboss-annotations-1.1-api.jar
+    ln -s $(build-classpath jboss/jboss-interceptors-1.1-api) javax/interceptor/api/main/jboss-interceptors-1.1-api.jar
     ln -s $(build-classpath jboss/jboss-remoting) org/jboss/remoting3/main/jboss-remoting.jar
     ln -s $(build-classpath jboss/jboss-dmr) org/jboss/dmr/main/jboss-dmr.jar
     ln -s $(build-classpath jboss/jboss-marshalling-river) org/jboss/marshalling/river/main/jboss-marshalling-river.jar
