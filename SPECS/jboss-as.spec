@@ -235,7 +235,7 @@ pushd $RPM_BUILD_ROOT%{homedir}
   # Create symlinks to jars
   pushd modules
     ln -s $(build-classpath jboss/jboss-vfs) org/jboss/vfs/main/jboss-vfs.jar
-    ln -s $(build-classpath jboss/jboss-comon-core) org/jboss/common-core/main/jboss-common-core.jar
+    ln -s $(build-classpath jboss/jboss-common-core) org/jboss/common-core/main/jboss-common-core.jar
     ln -s $(build-classpath jboss/jandex) org/jboss/jandex/main/jandex.jar
     ln -s $(build-classpath jboss/jboss-annotations-1.1-api) javax/annotation/api/main/jboss-annotations-api.jar
     ln -s $(build-classpath jboss/jboss-interceptors-1.1-api) javax/interceptor/api/main/jboss-interceptors-api_1.1.jar
