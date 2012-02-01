@@ -255,6 +255,7 @@ pushd $RPM_BUILD_ROOT%{homedir}
     ln -s $(build-classpath jboss/xnio-nio) org/jboss/xnio/nio/main/xnio-nio.jar
     ln -s $(build-classpath jboss/jboss-stdio) org/jboss/stdio/main/jboss-stdio.jar
     ln -s $(build-classpath jboss/staxmapper) org/jboss/staxmapper/main/staxmapper.jar
+    ln -s $(build-classpath geronimo-validation) javax/validation/api/main/geronimo-validation.jar
     ln -s $(build-classpath log4j) org/apache/log4j/main/log4j.jar
 
     # JBoss AS modules (without build-config and threads)
