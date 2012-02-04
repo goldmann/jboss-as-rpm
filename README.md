@@ -1,3 +1,3 @@
 # Upstream moved
 
-https://github.com/fedoraproject/jboss-as-rpm
+https://github.com/fedora-jboss-as/jboss-as-rpm
