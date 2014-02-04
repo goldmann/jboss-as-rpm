@@ -1,7 +1,7 @@
 diff -Naur jboss-as-7.1.0.CR1b-work/build/build.xml jboss-as-7.1.0.CR1b/build/build.xml
---- jboss-as-7.1.0.CR1b-work/build/build.xml	2012-01-24 10:28:07.982001560 +0200
-+++ jboss-as-7.1.0.CR1b/build/build.xml	2012-01-24 10:30:56.911001531 +0200
-@@ -99,8 +99,16 @@
+--- jboss-as-7.1.0.CR1b-work/build/build.xml	2011-12-23 23:56:17.000000000 +0200
++++ jboss-as-7.1.0.CR1b/build/build.xml	2012-01-31 16:39:03.480000064 +0200
+@@ -99,8 +99,24 @@
            ~ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
            -->
  
@@ -15,10 +15,18 @@ diff -Naur jboss-as-7.1.0.CR1b-work/build/build.xml jboss-as-7.1.0.CR1b/build/bu
 +            <maven-resource group="org.jboss.spec.javax.interceptor" artifact="jboss-interceptors-api_1.1_spec"/>
 +        </module-def>
 +
++        <module-def name="javax.transaction.api">
++            <maven-resource group="org.jboss.spec.javax.transaction" artifact="jboss-transaction-api_1.1_spec"/>
++        </module-def>
++
++        <module-def name="javax.validation.api">
++            <maven-resource group="javax.validation" artifact="validation-api"/>
++        </module-def>
++
          <module-def name="javax.xml.stream.api"/>
  
          <module-def name="org.apache.log4j">
-@@ -127,6 +135,14 @@
+@@ -127,6 +143,14 @@
              <maven-resource group="org.jboss.as" artifact="jboss-as-domain-management"/>
          </module-def>
  
@@ -33,7 +41,7 @@ diff -Naur jboss-as-7.1.0.CR1b-work/build/build.xml jboss-as-7.1.0.CR1b/build/bu
          <module-def name="org.jboss.as.embedded">
              <maven-resource group="org.jboss.as" artifact="jboss-as-embedded"/>
          </module-def>
-@@ -204,6 +220,10 @@
+@@ -204,6 +228,10 @@
              <maven-resource group="org.jboss.logmanager" artifact="jboss-logmanager-log4j"/>
          </module-def>
  
@@ -44,7 +52,7 @@ diff -Naur jboss-as-7.1.0.CR1b-work/build/build.xml jboss-as-7.1.0.CR1b/build/bu
          <module-def name="org.jboss.remoting3">
              <maven-resource group="org.jboss.remoting3" artifact="jboss-remoting"/>
          </module-def>
-@@ -298,10 +318,6 @@
+@@ -298,10 +326,6 @@
              <maven-resource group="javax.activation" artifact="activation"/>
          </module-def>
  
@@ -55,7 +63,7 @@ diff -Naur jboss-as-7.1.0.CR1b-work/build/build.xml jboss-as-7.1.0.CR1b/build/bu
          <module-def name="javax.ejb.api">
              <maven-resource group="org.jboss.spec.javax.ejb" artifact="jboss-ejb-api_3.1_spec"/>
          </module-def>
-@@ -330,10 +346,6 @@
+@@ -330,10 +354,6 @@
              <maven-resource group="javax.inject" artifact="javax.inject"/>
          </module-def>
  
@@ -65,6 +73,21 @@ diff -Naur jboss-as-7.1.0.CR1b-work/build/build.xml jboss-as-7.1.0.CR1b/build/bu
 -
          <module-def name="javax.jms.api">
              <maven-resource group="org.jboss.spec.javax.jms" artifact="jboss-jms-api_1.1_spec"/>
+         </module-def>
+@@ -382,14 +402,6 @@
+             <maven-resource group="org.jboss.spec.javax.servlet.jstl" artifact="jboss-jstl-api_1.2_spec"/>
+         </module-def>
+ 
+-        <module-def name="javax.transaction.api">
+-            <maven-resource group="org.jboss.spec.javax.transaction" artifact="jboss-transaction-api_1.1_spec"/>
+-        </module-def>
+-
+-        <module-def name="javax.validation.api">
+-            <maven-resource group="javax.validation" artifact="validation-api"/>
+-        </module-def>
+-
+         <module-def name="javax.ws.rs.api">
+             <maven-resource group="org.jboss.spec.javax.ws.rs" artifact="jboss-jaxrs-api_1.1_spec"/>
          </module-def>
 @@ -699,14 +711,6 @@
              <maven-resource group="org.jboss.as" artifact="jboss-as-domain-http-error-context"/>
@@ -94,7 +117,7 @@ diff -Naur jboss-as-7.1.0.CR1b-work/build/build.xml jboss-as-7.1.0.CR1b/build/bu
          </module-def>
 diff -Naur jboss-as-7.1.0.CR1b-work/build/pom.xml jboss-as-7.1.0.CR1b/build/pom.xml
 --- jboss-as-7.1.0.CR1b-work/build/pom.xml	2011-12-23 23:56:17.000000000 +0200
-+++ jboss-as-7.1.0.CR1b/build/pom.xml	2012-01-24 10:29:47.795001533 +0200
++++ jboss-as-7.1.0.CR1b/build/pom.xml	2012-01-31 15:57:50.906000088 +0200
 @@ -106,6 +106,21 @@
  
          <dependency>
@@ -165,7 +188,7 @@ diff -Naur jboss-as-7.1.0.CR1b-work/build/pom.xml jboss-as-7.1.0.CR1b/build/pom.
                  </dependency>
 diff -Naur jboss-as-7.1.0.CR1b-work/pom.xml jboss-as-7.1.0.CR1b/pom.xml
 --- jboss-as-7.1.0.CR1b-work/pom.xml	2011-12-23 23:56:17.000000000 +0200
-+++ jboss-as-7.1.0.CR1b/pom.xml	2012-01-24 10:29:47.825001534 +0200
++++ jboss-as-7.1.0.CR1b/pom.xml	2012-01-31 15:57:50.920000088 +0200
 @@ -275,8 +275,12 @@
          <module>deployment-repository</module>
          <module>domain-http</module>
